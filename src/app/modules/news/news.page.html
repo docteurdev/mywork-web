@@ -1,0 +1,140 @@
+<ion-content>
+  <div class="news" >
+    <button class="favButton" [class.active]="favorisShow" (click)="showRecents()">Récent</button>
+    <button class="favButton" [class.active]="favorisHide" (click)="showFavoris()" >Favoris</button>
+  <!--/////////////////////////////////////////////////////////////////// PLANING DU JOUR ////////////////////////////////////////////////////////////////////////// -->
+
+  <div [hidden]="favorisHide">
+    <ion-card class="planingDuJour">
+        <ion-grid class="planingGrid">
+          <ion-row class="firstPlaningRow" >
+            <ion-col size="12" class="planingFirstColumn">
+              <p class="planingParagraphe">Planning du jour </p>
+            </ion-col>
+            <ion-col size="2" class="colRes">
+              <ion-icon class="logoPlanning" name="calendar-clear-outline"></ion-icon>
+            </ion-col>
+            <ion-col size="8" class="colRes" >
+              <p class="h6">Réunion d'équipe <br>
+                <span class="pReservation">Dans 30 min - salle Blue</span>
+              </p>
+            </ion-col >
+            <ion-col size="2"  (click)="redirect(mapSalleReunion)" class="colRes">
+              <ion-icon class="logoPlanning" name="map-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid class="planingGrid">
+          <ion-row>
+            <ion-col size="2" class="colRes" >
+                <ion-icon class="logoPlanning" name="calendar-clear-outline"></ion-icon>
+            </ion-col>
+            <ion-col size="8" class="colRes">
+              <p class="h6">Validation des plans<br>
+              <span class="pReservation">A 16h00 - Box B32</span></p>
+            </ion-col>
+            <ion-col size="2" (click)="redirect(mapBox)"  class="colRes">
+              <ion-icon class="logoPlanning"  name="map-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card>
+
+  <!--/////////////////////////////////////////////////////////////////// ARTICLES////////////////////////////////////////////////////////////////////////// -->
+
+      <div *ngFor="let article of articles;let index = index" >
+        <ion-card class="" >
+          <div class="cardLogo"  >
+            <img class="iviplaylogoImage" src="assets/{{article?.imageLogo}}"  *ngIf="article.imageLogo"  [hidden]="iviplaylogo" >
+            <ion-icon class="logo" name="{{article.logo}}-outline" *ngIf="!article?.imageLogo" ></ion-icon>
+            <b>{{article.name}}</b>
+          </div>
+          <div *ngIf="arrayImg(article.images)">
+            <div [hidden]="imgItemBoolean" class="images">
+              <img class="img1" src="{{imgItem1}}" alt="">
+              <img class="img2" src="{{imgItem2}}" alt="" >
+              <img class="img3" src="{{imgItem3}}" alt="">
+            </div>
+            <div [hidden]="imgBoolean">
+              <img src="{{img}}" alt="" >
+            </div>
+          </div>
+          <ion-row>
+            <ion-col size="10">
+              <ion-icon  class="heart" color="{{article.like}}" (click)="articleLike(article)" name="heart"></ion-icon>
+              <ion-icon  class="comment" color="{{article.comments}}"  (click)="presentAlertMultipleButtons(article)" name="chatbubble"></ion-icon>
+              <ion-icon  name="share-social" class="disabled"></ion-icon>
+            </ion-col> 
+            <ion-col size="2" class="shareColumn" >
+              <ion-icon color="{{article.share}}" class="share" (click)="articleFav(article)" name="bookmark"  ></ion-icon>
+            </ion-col>
+          </ion-row>
+          <p *ngIf="article.id != 2" [innerHTML]="article.desc">{{article?.desc}}</p>
+          <div *ngIf="article.id == 2" class="meteoDiv">
+            {{this.currentWeather?.city}}
+            <br>
+            {{this.currentWeather?.temp}}
+            <br>
+            <ion-icon name="{{this.currentWeather?.logo}}" class="weather-icon"></ion-icon>
+          </div>
+          <div *ngIf="article.id == 6">
+            <a routerLink="/feedback">Ouvrir le lien</a>
+          </div>
+          <p class="postp"  >{{post}}</p>
+          <p class="postime"  >{{article.time}}</p>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+
+  <!--/////////////////////////////////////////////////////////////////// FAVORIS////////////////////////////////////////////////////////////////////////// -->
+  
+  <div [hidden]="favorisShow">
+    <div class="ion" >
+      <div *ngFor="let article of favorisArray;let index = index">
+        <ion-card class="" >
+          <div class="cardLogo"  >
+            <img class="iviplaylogoImage" src="assets/{{article?.imageLogo}}"  *ngIf="article.imageLogo"  [hidden]="iviplaylogo" >
+            <ion-icon class="logo" name="{{article.logo}}-outline" *ngIf="!article?.imageLogo" ></ion-icon>
+            <b>{{article.name}}</b>
+          </div>
+          <div *ngIf="arrayImg(article.images)">
+            <div [hidden]="imgItemBoolean" class="images">
+              <img class="img1" src="{{imgItem1}}" alt="">
+              <img class="img2" src="{{imgItem2}}" alt="" >
+              <img class="img3" src="{{imgItem3}}" alt="">
+            </div>
+          <div [hidden]="imgBoolean">
+            <img src="{{img}}" alt="" style="padding-bottom: 5px;">
+          </div>
+          </div>
+          <ion-row>
+            <ion-col size="10">
+              <ion-icon class="heart"  color="{{article.like}}" (click)="articleLike(article)" name="heart"></ion-icon>
+              <ion-icon class="favComment" color="{{article.comments}}"  (click)="presentAlertMultipleButtons(article)" name="chatbubble"></ion-icon>
+              <ion-icon class="disabled"name="share-social"></ion-icon>
+            </ion-col>
+            <ion-col size="2" class="shareColumn">
+              <ion-icon color="{{article.share}}" class="share" (click)="pullOutArticle(article)" name="bookmark"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <div  >
+            <div *ngIf="article.id != 2" [innerHTML]="article.desc">{{article?.desc}}</div>
+            <div *ngIf="article.id == 2" class="meteoDiv">
+              {{this.currentWeather?.city}}
+              <br>
+              {{this.currentWeather?.temp}}
+              <br>
+              <ion-icon name="{{this.currentWeather?.logo}}" class="weather-icon"></ion-icon>
+            </div>
+          </div>
+          <div *ngIf="article.id == 6">
+            <a routerLink="/feedback/app">Ouvrir le lien</a>
+          </div>
+          <p class="postp"  >{{post}}</p>
+          <p class="postime"  >{{article.time}}</p>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

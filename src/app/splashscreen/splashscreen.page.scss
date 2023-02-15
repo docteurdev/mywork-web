@@ -1,0 +1,44 @@
+.imageDiv{
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.iviplayLogo{
+  max-width:60%;
+}
+.ivifloLogo{
+  max-width: 6rem;
+}
+.titleDiv{
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end;
+  align-items:center;
+  width: 100%;
+}
+.ivifloLogoColumn{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:center;
+}
+.paragraph{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end;
+  align-items:center;
+}
+.imageContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

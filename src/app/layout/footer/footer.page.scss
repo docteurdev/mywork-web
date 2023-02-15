@@ -1,0 +1,9 @@
+@use '../../../theme/variables.scss' as v;
+
+ion-tab-button {
+    --color-selected: var(--color-tabs) !important;
+    --background-focused:var(--color-tabs);
+   }
+
+
+

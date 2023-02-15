@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar hideBackButton="true" >
+  <div class="centerFlex">
+    <ion-buttons slot="start" style="width: 30%;" >
+      <ion-menu-button ></ion-menu-button>
+      <ion-icon (click)="activeDidacticiel()" class="iconDidacticiel" name="library-outline"></ion-icon>
+    </ion-buttons>
+    <div style="width: 40%;" class="centerFlex">
+      <img src="assets/logo.png">
+    </div>
+    <div style="width: 30%;" class="notifContactIcons">
+      <ion-icon (click)="redirectNotif()"  class="icon1" name="notifications-outline"></ion-icon>
+      <ion-icon (click)="redirect()" class="icon2" name="person-circle-outline"></ion-icon>
+    </div>
+  </div>
+  </ion-toolbar>
+</ion-header>
+  <ion-menu side="start" contentId="main-content"menuId="first"  type="overlay">
+    <ion-router-outlet id="main-content" main></ion-router-outlet>
+    <ion-content>
+      <ion-list>
+        <ion-item lines="none">
+          <h4>Outils</h4>
+        </ion-item>
+        <ion-item lines="none" >
+          <ion-icon name="cube-outline"></ion-icon>
+          <p class="list-lab">Simulateur de position</p>
+        </ion-item>
+        <ion-item lines="none" >
+          <ion-icon name="wifi-outline"></ion-icon>
+          <p class="list-lab">Détection deBLE</p>
+        </ion-item>
+        <ion-item (click)="redirectToParam()" lines="none" >
+          <ion-icon name="settings-outline"></ion-icon>
+          <p class="list-lab">Paramètre </p>
+        </ion-item>
+        <div class="divider"></div>
+        <!-- <h4> Information</h4> -->
+        <ion-item lines="none">
+          <h4>Information</h4>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="information-circle-outline" class="Danger"></ion-icon>
+          <p class="list-lab">Version 0.1.1</p>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>

@@ -1,0 +1,36 @@
+<ion-content  >
+  <div class="content2">
+    <ion-grid class="gridStart"   >
+      <ion-row id="step1" >
+          <ion-col class="modele" size="5.8"  *ngFor=" let service of servicesMocks; let index = index" (click)="serviceList(service)" id="col" >
+            <div  [class.disabled]="service.link == 'false' "   >
+              <ion-icon name="{{service.icon}}" ></ion-icon>
+                <p >{{service.label}}</p>
+              </div>
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="bottomSheet" (click)="toogleMode()" >
+        <ion-grid class="service-grid">
+          <ion-row class="servicesRow">
+            <ion-col size="3" class="colservices" *ngFor="let serviceItem of services; let index = index" >
+              <div *ngIf="serviceItem.link">
+                <a routerLink="{{serviceItem.link}}" >
+                  <ion-icon name="{{serviceItem.icon}}"  ></ion-icon>
+                  <p class="serviceName">{{serviceItem.label}}</p>
+                </a>
+              </div>
+              <div class="ion-text-center" *ngIf="!serviceItem.link" (click)="demoAlert()">
+                <ion-icon name="{{serviceItem.icon}}"></ion-icon>
+                <p class="serviceName">{{serviceItem.label}}
+                  <br>
+                  <ion-badge color="medium">à venir</ion-badge>
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

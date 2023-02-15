@@ -1,0 +1,102 @@
+@use '../../../theme/variables.scss' as v ;
+
+ion-content{
+    height: 100%;
+    width: 100%;
+}
+.modele{
+    background-color: var( --ion-color-light);
+    margin-top:1%;
+    border-radius: 10px;
+    margin-left: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3%;
+}
+.content2{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+#step1{
+    width: 100%;
+}
+ion-col{
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ion-grid{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+}
+
+
+ion-row{
+    width: 100%;
+    padding: 0.5rem;
+    // margin-left: 1rem;
+ }
+p{
+    font-size: 75%;
+}
+ion-icon{
+    color: v.$primary;
+    font-size: 22px;
+}
+a{
+    text-decoration: none;
+    color: var(--ion-color-dark);
+}
+.iconDisabled{
+    opacity: .4;
+}
+.gridStart{
+    margin-top:5rem;
+    width: 100%;
+}
+.reservationSalles{
+    font-size: 14px;
+}
+.Dispositif,#alarme{
+    font-size: 13px;
+}
+.gridEvenement{
+    margin-bottom: 1%;
+}
+.bottomSheet{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin-bottom: -2px;
+    bottom: 0;
+    border-radius: 30px 30px 0px 0px;
+    z-index: 20;
+    background-color:  var( --ion-color-light);
+    overflow: auto;
+    transform: translate3d(0,0,0);
+}
+.serviceName{
+    font-size: 65%;
+}
+.colservices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+.disabled{
+    opacity: 0.4;
+}
+ion-badge{
+    font-size: 0.7rem;
+
+}
+// .service-grid, .servicesRow, .colservices{
+//     margin-top: 0%;
+// }
